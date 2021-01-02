@@ -12,12 +12,11 @@
 class Solution {
 public:
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
-        if(!original)     return nullptr;
-        if(original == target)   return cloned;     // ensures we land on target node, hence works with duplicate values present in tree
-
+        if(!original or original == target)  return cloned;
+        
         auto ls = getTargetCopy(original->left, cloned->left, target);
         auto rs = getTargetCopy(original->right, cloned->right, target);
-
+        
         return ls ? ls : rs;
     }
 };
