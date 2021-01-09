@@ -10,6 +10,31 @@
  * };
  */
 
+// Iterative approach (stack based) - More scalable since it's not bound to application stack like recusive approach
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        if(!root)   return root;
+        
+        stack<TreeNode *> s;
+        s.push(root);
+        
+        while(!s.empty()) {
+            auto cur = s.top(); s.pop();
+            swap(cur->left, cur->right);
+            
+            if(cur->right)  s.push(cur->right);
+            if(cur->left)   s.push(cur->left);
+        }
+        return root;
+    }
+};
+
+
+// ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+// Recursive approach
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
