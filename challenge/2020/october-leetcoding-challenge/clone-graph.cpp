@@ -55,17 +55,14 @@ public:
         mp[node] = new Node(node->val);
         
         while(!q.empty()) {
-            int len = q.size();
-            while(len--) {
-                auto cur = q.front(); q.pop();
-                
-                for(auto nei: cur->neighbors) {
-                    if(!mp.count(nei)) {
-                        q.push(nei);
-                        mp[nei] = new Node(nei->val);
-                    }
-                    mp[cur]->neighbors.push_back(mp[nei]);
+            auto cur = q.front(); q.pop();
+            
+            for(auto nei: cur->neighbors) {
+                if(!mp.count(nei)) {
+                    q.push(nei);
+                    mp[nei] = new Node(nei->val);
                 }
+                mp[cur]->neighbors.push_back(mp[nei]);
             }
         }
         return mp[node];
