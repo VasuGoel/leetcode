@@ -15,3 +15,12 @@ public:
         reverse(nums.begin()+l+1, nums.end());
     }
 };
+
+/*
+
+        l     r
+6 8 3   2 7 5 4 1
+6 8 3   4 7 5 2 1   -> swap(nums[l], nums[r])
+6 8 3   4 1 2 5 7   -> reverse numbers after l+1
+
+*/
